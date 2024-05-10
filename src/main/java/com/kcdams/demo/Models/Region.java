@@ -1,5 +1,4 @@
 package com.kcdams.demo.Models;
-
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -10,7 +9,10 @@ import lombok.Data;
 public class Region {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int regCode;
-    private String regName;
-    private int regStatus;
+    private int regionCode;
+    @ManyToOne
+    @JoinColumn(name = "zoneCode", referencedColumnName = "zoneCode")
+    private Zone zone;
+    private String regionName;
+    private int regionStatus;
 }
