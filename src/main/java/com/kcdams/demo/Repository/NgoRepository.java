@@ -9,7 +9,6 @@ import java.util.Optional;
 
 public interface NgoRepository extends JpaRepository<Ngo,Integer> {
     @Query(value = "SELECT * from ngo WHERE ngo_code = ?1", nativeQuery = true )
-    Optional<Ngo>  checkExisting();
 
     Optional<Ngo> checkExistingNgo(int ngoCode);
 

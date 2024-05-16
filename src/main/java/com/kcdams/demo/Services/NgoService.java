@@ -1,9 +1,6 @@
 package com.kcdams.demo.Services;
 
-
 import com.kcdams.demo.Models.Ngo;
-import com.kcdams.demo.Models.Region;
-import com.kcdams.demo.Models.Zone;
 import com.kcdams.demo.Repository.NgoRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +17,7 @@ public class NgoService {
     @Autowired
     private NgoRepository ngoRepository;
 
-    public List<Ngo> getAllRegions(){return ngoRepository.findAll();}
+    public List<Ngo> getAllNgo(){return ngoRepository.findAll();}
     public List<Ngo> ngoStatusOne() {
         return ngoRepository.ngoStatusOne();
     }
@@ -31,16 +28,16 @@ public class NgoService {
 
     @Transactional
     public Optional<Ngo> updateNgo(int ngoCode, Ngo ngo) {
-        return ngoRepository.findById(ngoCode).map(z -> {
-            z.setNgoName(ngo.getNgoName());
-            z.setNgoStatus(1);
-            return z;
+        return ngoRepository.findById(ngoCode).map(n -> {
+            n.setNgoName(ngo.getNgoName());
+            n.setNgoStatus(1);
+            return n;
         });
     }
 
         public Ngo saveNgo(Ngo ngo) {
-            Optional<Ngo> z = ngoRepository.checkExistingNgo(ngo.getNgoCode());
-            if (z.isEmpty()) {
+            Optional<Ngo> n = ngoRepository.checkExistingNgo(ngo.getNgoCode());
+            if (n.isEmpty()) {
                 return ngoRepository.save(ngo);
             } else {
                 throw new ResponseStatusException(HttpStatus.FOUND, "Ngo already exists");

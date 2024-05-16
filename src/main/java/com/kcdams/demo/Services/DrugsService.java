@@ -1,7 +1,6 @@
 package com.kcdams.demo.Services;
 
 import com.kcdams.demo.Models.Drugs;
-import com.kcdams.demo.Models.Zone;
 import com.kcdams.demo.Repository.DrugsRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +38,7 @@ public class DrugsService {
         if (z.isEmpty()) {
             return drugsRepository.save(drugs);
         } else {
-            throw new ResponseStatusException(HttpStatus.FOUND, "Zone already exists");
+            throw new ResponseStatusException(HttpStatus.FOUND, "Drug already exists");
         }
     }
 

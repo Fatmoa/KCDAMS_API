@@ -1,8 +1,6 @@
 package com.kcdams.demo.Controller;
 
-
 import com.kcdams.demo.Models.Drugs;
-import com.kcdams.demo.Models.Zone;
 import com.kcdams.demo.Services.DrugsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
