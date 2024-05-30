@@ -13,9 +13,10 @@ import java.util.Optional;
 
     public interface ShehiaRepository extends JpaRepository<Shehia, Integer> {
     @Query(value = "SELECT * FROM shehia WHERE shehia_code =?1", nativeQuery = true)
-    Optional <Shehia> checkExistingShehia(int shehia_code);
+    Optional<Shehia> checkExistingShehia(int shehia_code);
+
 
     @Query(value = "SELECT * FROM shehia WHERE district_code = ?1 and shehia_status = 1", nativeQuery = true)
-    List<Shehia> allShehiaByDistrictStatusOne(int district_code);
+    List<Shehia> allShehiaByDistrictStatusOne(int districtCode);
 
 }

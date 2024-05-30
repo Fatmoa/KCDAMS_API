@@ -1,5 +1,6 @@
 package com.kcdams.demo.Services;
 
+import com.kcdams.demo.Models.District;
 import com.kcdams.demo.Models.Shehia;
 import com.kcdams.demo.Repository.ShehiaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,9 +22,6 @@ public class ShehiaService {
         return shehiaRepository.findAll();
     }
 
-    public List<Shehia> allShehiaByDistrictStatusOne(int district_code) {
-        return shehiaRepository.allShehiaByDistrictStatusOne(district_code);
-    }
 
     public Shehia getShehiaByCode(int shehiaCode) {
         return shehiaRepository.findById(shehiaCode).orElse(null);
@@ -49,5 +48,20 @@ public class ShehiaService {
             s.setDistrict(shehia.getDistrict());
             return s;
         });
+    }
+
+
+    public List<Shehia> allShehiaByDistrictCodeStatusOne(int district_code) {
+        return shehiaRepository.allShehiaByDistrictStatusOne(district_code);
+    }
+
+
+    public List<Shehia> allShehiaByDistrictCode(int district_code) {
+        List<Shehia> shehias = shehiaRepository.allShehiaByDistrictStatusOne(district_code);
+        if(shehias.size()>0){
+            return shehias;
+        }else{
+            return new ArrayList<>();
+        }
     }
 }

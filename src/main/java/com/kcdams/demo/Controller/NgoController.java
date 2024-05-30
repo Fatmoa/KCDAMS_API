@@ -17,10 +17,12 @@ import java.util.Optional;
 public class NgoController {
     @Autowired
     public NgoService ngoService;
+
     @GetMapping("/all")
     public List<Ngo> getAllNgo(){
         return ngoService.getAllNgo();
     }
+
     @GetMapping("ngoStatusOne")
     public List<Ngo>  ngoStatusOne(){
         return ngoService.ngoStatusOne();

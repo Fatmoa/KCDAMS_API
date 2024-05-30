@@ -1,6 +1,7 @@
 package com.kcdams.demo.Controller;
 
 import com.kcdams.demo.Models.District;
+import com.kcdams.demo.Models.Region;
 import com.kcdams.demo.Services.DistrictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,5 +50,10 @@ public class DistrictController {
     public ResponseEntity<Void> deleteDistrict(@PathVariable int districtCode) {
         districtService.deleteDistrict(districtCode);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/byRegionCode/{regionCode}")
+    public List<District> allDistrictByRegionCode(@PathVariable int regionCode) {
+        return districtService.allDistrictByRegionCode(regionCode);
     }
 }
