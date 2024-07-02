@@ -59,6 +59,9 @@ public class ReceptionService {
             p.setNgoName(reception.getNgoName());
             p.setCowName(reception.getCowName());
             p.setCowPhone(reception.getCowPhone());
+            p.setKinName(reception.getKinName());
+            p.setKinRelationship(reception.getKinRelationship());
+            p.setKinNumber(reception.getKinNumber());
             return p;
         });
     }

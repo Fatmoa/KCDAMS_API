@@ -24,4 +24,7 @@ public class Reception {
     private String ngoName;
     private String cowName;
     private int CowPhone;
+    private String KinName;
+    private String kinRelationship;
+    private int kinNumber;
 }
