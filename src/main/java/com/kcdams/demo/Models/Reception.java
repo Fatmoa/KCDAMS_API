@@ -7,24 +7,24 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "reception")
+//@Table(name = "reception")
 
 public class Reception {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int matCode;
-//    private String matCode;
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int matCode;
+    private String matCode;
     private String patFName;
     private String patSName;
     private String patLName;
     private Date DOB;
-    private int phoneNumber;
-    private long Nida;
+    private String phoneNumber;
+    private String Nida;
     private String ngoName;
     private String cowName;
-    private int CowPhone;
+    private String CowPhone;
     private String KinName;
     private String kinRelationship;
-    private int kinNumber;
+    private String kinNumber;
 }

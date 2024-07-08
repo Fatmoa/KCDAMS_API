@@ -24,7 +24,7 @@ public class ReceptionController {
     }
 
     @GetMapping("/{matCode}")
-    public ResponseEntity<Reception> getReceptionByCode(@PathVariable int matCode){
+    public ResponseEntity<Reception> getReceptionByCode(@PathVariable String matCode){
         Reception reception = receptionService.getReceptionByCode(matCode);
         return reception != null ? new ResponseEntity<>(reception, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -36,12 +36,12 @@ public class ReceptionController {
     }
 
     @PutMapping("/editReception/{id}")
-    public Optional<Reception> updateReception(@PathVariable("id") int id, @RequestBody Reception reception) {
+    public Optional<Reception> updateReception(@PathVariable("id") String id, @RequestBody Reception reception) {
         return receptionService.updateReception(id, reception);
     }
 
     @DeleteMapping("/{matCode}")
-    public ResponseEntity<Void> deleteReception(@PathVariable int matCode) {
+    public ResponseEntity<Void> deleteReception(@PathVariable String matCode) {
         receptionService.deleteReception(matCode);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

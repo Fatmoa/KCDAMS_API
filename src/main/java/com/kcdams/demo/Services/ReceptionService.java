@@ -15,40 +15,36 @@ import java.util.Optional;
 @Service
 public class ReceptionService {
     @Autowired
-    private ReceptionRepository receptionRepository;
+    public ReceptionRepository receptionRepository;
 
-//    public Reception saveReception(Reception r){
+    public Reception saveReception(Reception r){
 //        Reception rec = new Reception();
 //        rec.setMatCode( generateNextMatCode());
-//        return receptionRepository.save(rec);
-//    }
-//
-//    @Transactional
-//    public  String generateNextMatCode() {
-//        String lastMatCode = receptionRepository.findLastMatCode();
-//        if (lastMatCode == null || lastMatCode.isEmpty()) {
-//            return "MAT01";
-//        } else {
-//            int lastNumber = Integer.parseInt(lastMatCode.substring(3));
-//            return String.format("MAT%02d", lastNumber + 1);
-//        }
-//    }
-//}
+        r.setMatCode(generateNextMatCode());
+        return receptionRepository.save(r);
+    }
 
-
-
-
+    @Transactional
+    public  String generateNextMatCode() {
+        String lastMatCode = receptionRepository.findLastMatCode();
+        if (lastMatCode == null || lastMatCode.isEmpty()) {
+            return "MAT01";
+        } else {
+            int lastNumber = Integer.parseInt(lastMatCode.substring(3));
+            return String.format("MAT%02d", lastNumber + 1);
+        }
+    }
 
     public List<Reception> getAllReception(){
         return receptionRepository.findAll();
     }
 
-    public Reception getReceptionByCode(int matCode) {
+    public Reception getReceptionByCode(String matCode) {
         return receptionRepository.findById(matCode).orElse(null);
     }
 
     @Transactional
-    public Optional<Reception> updateReception(int matCode, Reception reception) {
+    public Optional<Reception> updateReception(String matCode, Reception reception) {
         return receptionRepository.findById(matCode).map(p -> {
             p.setPatFName(reception.getPatFName());
             p.setPatSName(reception.getPatSName());
@@ -66,16 +62,16 @@ public class ReceptionService {
         });
     }
 
-    public Reception saveReception(Reception reception) {
-        Optional<Reception> z = receptionRepository.checkExistingReception(reception.getMatCode());
-        if (z.isEmpty()) {
-            return receptionRepository.save(reception);
-        } else {
-            throw new ResponseStatusException(HttpStatus.FOUND, "Err");
-        }
-    }
+//    public Reception saveReception(Reception reception) {
+//        Optional<Reception> z = receptionRepository.checkExistingReception(reception.getMatCode());
+//        if (z.isEmpty()) {
+//            return receptionRepository.save(reception);
+//        } else {
+//            throw new ResponseStatusException(HttpStatus.FOUND, "Err");
+//        }
+//    }
 
-    public void deleteReception(int matCode) {
+    public void deleteReception(String matCode) {
         receptionRepository.deleteById(matCode);
     }
 }
