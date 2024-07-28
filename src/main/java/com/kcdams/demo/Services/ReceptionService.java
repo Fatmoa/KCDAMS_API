@@ -4,9 +4,8 @@ import com.kcdams.demo.Models.Reception;
 import com.kcdams.demo.Repository.ReceptionRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -43,24 +42,31 @@ public class ReceptionService {
         return receptionRepository.findById(matCode).orElse(null);
     }
 
-    @Transactional
-    public Optional<Reception> updateReception(String matCode, Reception reception) {
-        return receptionRepository.findById(matCode).map(p -> {
-            p.setPatFName(reception.getPatFName());
-            p.setPatSName(reception.getPatSName());
-            p.setPatLName(reception.getPatLName());
-            p.setDOB(reception.getDOB());
-            p.setPhoneNumber(reception.getPhoneNumber());
-            p.setNida(reception.getNida());
-            p.setNgoName(reception.getNgoName());
-            p.setCowName(reception.getCowName());
-            p.setCowPhone(reception.getCowPhone());
-            p.setKinName(reception.getKinName());
-            p.setKinRelationship(reception.getKinRelationship());
-            p.setKinNumber(reception.getKinNumber());
-            return p;
-        });
-    }
+ @Transactional
+ public Reception updateReception(String matcode,Reception reception){
+     if(receptionRepository.existsById(matcode)){
+         reception.setMatCode(matcode);
+     }
+     return receptionRepository.save(reception);
+ }
+
+//    public Optional<Reception> updateReception(String matCode, Reception reception) {
+//        return receptionRepository.findById(matCode).map(p -> {
+//            p.setPatFName(reception.getPatFName());
+//            p.setPatSName(reception.getPatSName());
+//            p.setPatLName(reception.getPatLName());
+//            p.setDOB(reception.getDOB());
+//            p.setPhoneNumber(reception.getPhoneNumber());
+//            p.setNida(reception.getNida());
+//            p.setNgoName(reception.getNgoName());
+//            p.setCowName(reception.getCowName());
+//            p.setCowPhone(reception.getCowPhone());
+//            p.setKinName(reception.getKinName());
+//            p.setKinRelationship(reception.getKinRelationship());
+//            p.setKinNumber(reception.getKinNumber());
+//            return p;
+//        });
+//    }
 
 //    public Reception saveReception(Reception reception) {
 //        Optional<Reception> z = receptionRepository.checkExistingReception(reception.getMatCode());

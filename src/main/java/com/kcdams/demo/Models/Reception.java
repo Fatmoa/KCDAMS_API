@@ -12,19 +12,28 @@ import java.util.Date;
 public class Reception {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private int matCode;
     private String matCode;
     private String patFName;
-    private String patSName;
+    private String patMName;
     private String patLName;
-    private Date DOB;
+    private String gender;
+    private String mar_status;
+    private String employment;
+    private String education;
+    private int no_children;
+    private String reg;
+    private Date dob;
     private String phoneNumber;
     private String Nida;
     private String ngoName;
     private String cowName;
     private String CowPhone;
     private String KinName;
-    private String kinRelationship;
-    private String kinNumber;
+    private String kinPhoneNumber;
+    private String kinRelation;
+    private String address;
+
+    @ManyToOne
+    @JoinColumn(name = "districtCode",referencedColumnName = "districtCode")
+    private District districtData;
 }
