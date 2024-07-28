@@ -52,4 +52,9 @@ public class RoleController {
         roleService.deleteRole(roleId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("/byRoleName/{roleName}")
+    public Optional<Role> byRoleName(@PathVariable("roleName") String roleName){
+        return roleService.roleByName(roleName);
+    }
 }

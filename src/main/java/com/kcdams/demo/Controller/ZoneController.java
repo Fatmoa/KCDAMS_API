@@ -23,6 +23,7 @@ public class ZoneController {
     public List<Zone> getAllZones() {
         return zoneService.getAllZones();
     }
+
     @GetMapping("/zoneStatusOne")
     public List<Zone> zoneStatusOne() {
         return zoneService.zoneStatusOne();

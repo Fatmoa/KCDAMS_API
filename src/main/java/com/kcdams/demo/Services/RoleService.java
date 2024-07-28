@@ -49,4 +49,13 @@ public class RoleService {
     public void deleteRole(int roleId) {
         roleRepository.deleteById(roleId);
     }
+
+    public Optional<Role> roleByName(String roleName){
+        Optional<Role> r = roleRepository.rolebyName(roleName);
+        if(r.isPresent()){
+            return r;
+        }else{
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"role not found ");
+        }
+    }
 }
