@@ -1,6 +1,5 @@
 package com.kcdams.demo.Models;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,6 +14,9 @@ public class Registrar {
     private  String regisLname;
     private String resiGender;
     private String regisEmail;
+//    @ManyToOne
+//    @JoinColumn(name="roleId", referencedColumnName = "roleId")
+//    private Role roles;
     private String regisNumb;
     private String emplNum;
 

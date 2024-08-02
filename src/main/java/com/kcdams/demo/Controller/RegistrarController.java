@@ -17,7 +17,6 @@ import java.util.Optional;
 public class RegistrarController {
     @Autowired
     private RegistrarService registrarService;
-
     @GetMapping("/all")
     public List<Registrar> getAllRegistrar() {
         return registrarService.getAllRegistrar();
@@ -45,4 +44,5 @@ public class RegistrarController {
         registrarService.deleteRegistrar(regId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 }
