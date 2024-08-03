@@ -14,9 +14,9 @@ public class Registrar {
     private  String regisLname;
     private String resiGender;
     private String regisEmail;
-//    @ManyToOne
-//    @JoinColumn(name="roleId", referencedColumnName = "roleId")
-//    private Role roles;
+    @ManyToOne
+    @JoinColumn(name="roleId", referencedColumnName = "roleId")
+    private Role roles;
     private String regisNumb;
     private String emplNum;
 
