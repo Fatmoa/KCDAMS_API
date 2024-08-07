@@ -25,7 +25,10 @@ public class Reception {
     private Date dob;
     private String phoneNumber;
     private String Nida;
-    private String ngoName;
+//    @ManyToOne
+//    @JoinColumn(name = "ngoCode", referencedColumnName = "ngoCode")
+//    private Ngo ngoData;
+    private String ngo;
     private String cowName;
     private String CowPhone;
     private String KinName;

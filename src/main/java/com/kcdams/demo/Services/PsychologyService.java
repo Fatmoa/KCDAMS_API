@@ -1,8 +1,9 @@
 package com.kcdams.demo.Services;
 
+
 import com.kcdams.demo.Models.Psychology;
-import com.kcdams.demo.Models.Registrar;
 import com.kcdams.demo.Repository.PsychologyRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,15 @@ import java.util.Optional;
 public class PsychologyService {
     @Autowired
     private PsychologyRepository psychologyRepository;
+    public List<Psychology> getAllPsychology() {
+        return psychologyRepository.findAll();
+    }
 
-    public List<Psychology> getAllPsychology() { return psychologyRepository.findAll();}
+    public Psychology getPsychologyByCode(int psyId) {
+        return psychologyRepository.findById(psyId).orElse(null);
+    }
 
-    public Psychology getPsychologyByCode(int psyId) { return psychologyRepository.findById(psyId).orElse(null);}
-
+    @Transactional
     public Optional<Psychology> updatePsychology(int psyId, Psychology psychology) {
         return psychologyRepository.findById(psyId).map(z -> {
             z.setPsyName(psychology.getPsyName());
@@ -34,24 +39,18 @@ public class PsychologyService {
         });
     }
 
-//    public Psychology savePsychology(Psychology psychology) {
-//        Optional<Psychology> z = psychologyRepository.checkExistingPsychology(psychology.getPsyId());
-//        if (z.isEmpty()) {
-//            return psychologyRepository.save(psychology);
-//        } else {
-//            throw new ResponseStatusException(HttpStatus.FOUND, "Already exists");
-//        }
-//    }
-
     public Psychology savePsychology(Psychology psychology) {
         Optional<Psychology> z = psychologyRepository.checkExistingPsychology(psychology.getPsyId());
         if (z.isEmpty()) {
             return psychologyRepository.save(psychology);
         } else {
-            throw new ResponseStatusException(HttpStatus.FOUND, "Already exists");
+            throw new ResponseStatusException(HttpStatus.FOUND, "Psychology already exists");
         }
     }
 
-    public void deletePsychology(int psyId) { psychologyRepository.deleteById(psyId);
+    public void deletePsychology(int psyId) {
+        psychologyRepository.deleteById(psyId);
     }
+
+
 }

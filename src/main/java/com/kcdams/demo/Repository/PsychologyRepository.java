@@ -9,6 +9,6 @@ import java.util.Optional;
 public interface PsychologyRepository extends JpaRepository<Psychology,Integer> {
 
 
-    @Query(value = "SELECT * FROM psychology WHERE psy_Id",nativeQuery = true)
+    @Query(value = "SELECT * FROM psychology WHERE psy_Id = ?1" ,nativeQuery = true)
     Optional<Psychology> checkExistingPsychology(int psyId);
 }
