@@ -28,13 +28,15 @@ public class PsychologistService {
     @Transactional
     public Optional<Psychologist> updatePsychologist(int pyId, Psychologist psychologist) {
         return psychologistRepository.findById(pyId).map(z -> {
-            z.setPyName(psychologist.getPyName());
-            z.setPyMname(psychologist.getPyMname());
-            z.setPyLname(psychologist.getPyLname());
-            z.setPyGender(psychologist.getPyGender());
-            z.setPyEmail(psychologist.getPyEmail());
-            z.setPyNumb(psychologist.getPyNumb());
-            z.setPyEmplNum(psychologist.getPyEmplNum());
+            z.setDrugDuration(psychologist.getDrugDuration());
+            z.setDrugDay(psychologist.getDrugDay());
+            z.setReasUse(psychologist.getReasUse());
+            z.setTStop(psychologist.getTStop());
+            z.setRStop(psychologist.getRStop());
+            z.setFHistory(psychologist.getFHistory());
+            z.setCrAffair(psychologist.getCrAffair());
+            z.setSPlan(psychologist.getSPlan());
+            z.setComm(psychologist.getComm());
             return z;
         });
     }
@@ -44,7 +46,7 @@ public class PsychologistService {
         if (z.isEmpty()) {
             return psychologistRepository.save(psychologist);
         } else {
-            throw new ResponseStatusException(HttpStatus.FOUND, "Psychologist already exists");
+            throw new ResponseStatusException(HttpStatus.FOUND, "Already exists");
         }
     }
 

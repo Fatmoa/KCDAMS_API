@@ -47,7 +47,4 @@ public class Observation {
     private String pulse;
     private String pr;
 
-
-
-
 }
