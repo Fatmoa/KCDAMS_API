@@ -14,7 +14,7 @@ import java.util.Optional;
 @RequestMapping("/api/psychologist")
 @CrossOrigin
 
-public class PsychologistController {
+public class                                                                                                                                                                                PsychologistController {
     @Autowired
     private PsychologistService psychologistService;
 
