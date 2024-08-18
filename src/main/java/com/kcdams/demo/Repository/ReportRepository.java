@@ -29,6 +29,15 @@ public class ReportRepository {
         return receptionRepository.patientDateReport();
     }
 
+    public List<Map<String,Object>> patientGenderReport(){
+        return receptionRepository.patientGenderReport();
+    }
+
+    public List<Map<String,Object>> doctorGenderReport(){
+        return doctorRepository.doctorGenderReport();
+    }
+
+
     public long getAllRegistrar(){
         return registrarRepository.count();
     }

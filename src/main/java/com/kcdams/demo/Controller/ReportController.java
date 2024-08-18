@@ -29,6 +29,18 @@ public class ReportController {
         return reportRepository.patientDateReport();
     }
 
+    @GetMapping("/patientGenderReport")
+    public List<Map<String,Object>> patientGenderReport(){
+        return reportRepository.patientGenderReport();
+    }
+
+    @GetMapping("/doctorGenderReport")
+    public List<Map<String,Object>> doctorGenderReport(){
+        return reportRepository.doctorGenderReport();
+    }
+
+
+
     @GetMapping("/summary")
     public ResponseEntity<Map<String, Long>> getSummaryReport() {
         Map<String, Long> summary = new HashMap<>();

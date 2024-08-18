@@ -35,10 +35,6 @@ public class ReceptionController {
         return new ResponseEntity<>(savedReception, HttpStatus.CREATED);
     }
 
-//    @PutMapping("/editReception/{id}")
-//    public Optional<Reception> updateReception(@PathVariable("id") String id, @RequestBody Reception reception) {
-//        return receptionService.updateReception(id, reception);
-//    }
 
     @PutMapping("/editReception/{matcode}")
     public Reception updateReception(@PathVariable("matcode") String matcode, @RequestBody Reception reception) {

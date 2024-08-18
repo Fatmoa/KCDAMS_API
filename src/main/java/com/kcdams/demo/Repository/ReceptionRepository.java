@@ -25,4 +25,8 @@ public interface ReceptionRepository extends JpaRepository<Reception,String> {
     @Query(value = "SELECT count(*) as receptions,MONTH(r.dob) as month from reception r " +
             "GROUP BY MONTH(r.dob)", nativeQuery = true)
     List<Map<String,Object>> patientDateReport();
+
+    @Query(value = "SELECT count(*) as receptions,gender from reception r " +
+            "GROUP BY gender", nativeQuery = true)
+    List<Map<String,Object>> patientGenderReport();
 }
