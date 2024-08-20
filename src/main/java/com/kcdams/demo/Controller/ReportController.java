@@ -1,6 +1,7 @@
 package com.kcdams.demo.Controller;
 
 import com.kcdams.demo.Repository.ReportRepository;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,10 +16,11 @@ import java.util.Map;
 @RequestMapping("/api/report")
 @CrossOrigin
 @RestController
+@Data
 public class ReportController {
 
     @Autowired
-    private ReportRepository reportRepository;
+    private final ReportRepository reportRepository;
 
     @GetMapping("/patientDistrictReport")
     public List<Map<String,Object>> patientDistrictReport(){
@@ -42,12 +44,12 @@ public class ReportController {
 
 
     @GetMapping("/summary")
-    public ResponseEntity<Map<String, Long>> getSummaryReport() {
-        Map<String, Long> summary = new HashMap<>();
-        summary.put("registrars", reportRepository.getAllRegistrar());
-        summary.put("psychologists", reportRepository.getAllPsychology());
-        summary.put("nurses", reportRepository.getAllNursing());
-        summary.put("doctors", reportRepository.getAllDoctor());
+    public ResponseEntity<Map<String, String>> getSummaryReport() {
+        Map<String, String> summary = new HashMap<>();
+        summary.put("registrars", reportRepository.getAllRegistrar().get("numberOfRegistrar").toString());
+        summary.put("psychologists", reportRepository.getAllPsychology().get("numberOfPsychologists").toString());
+        summary.put("nurses", reportRepository.getAllNursing().get("numberOfNurse").toString());
+        summary.put("doctors", reportRepository.getAllDoctor().get("numberOfDoctor").toString());
         return ResponseEntity.ok(summary);
     }
 }

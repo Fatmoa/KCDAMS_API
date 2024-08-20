@@ -1,6 +1,7 @@
 package com.kcdams.demo.Repository;
 
 
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,14 +13,15 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/reports")
 @CrossOrigin
+@Data
 public class ReportRepository {
 
     @Autowired
     public  ReceptionRepository receptionRepository;
-    public RegistrarRepository registrarRepository;
-    public PsychologyRepository psychologyRepository;
-    public NursingRepository nursingRepository;
-    public DoctorRepository doctorRepository;
+    public final RegistrarRepository registrarRepository;
+    public final PsychologyRepository psychologyRepository;
+    public final NursingRepository nursingRepository;
+    public final DoctorRepository doctorRepository;
 
     public List<Map<String,Object>> patientDistrictReport(){
         return receptionRepository.patientDistrictReport();
@@ -38,19 +40,19 @@ public class ReportRepository {
     }
 
 
-    public long getAllRegistrar(){
-        return registrarRepository.count();
+    public Map<String,Object> getAllRegistrar(){
+        return registrarRepository.contNumberOfRegister();
     }
 
-    public long getAllPsychology(){
-        return psychologyRepository.count();
+    public Map<String,Object> getAllPsychology(){
+        return psychologyRepository.countNumberOfPsychologists();
     }
 
-    public long getAllNursing(){
-        return nursingRepository.count();
+    public Map<String,Object> getAllNursing(){
+        return nursingRepository.countNumberOfNurse();
     }
 
-    public long getAllDoctor(){
-        return doctorRepository.count();
+    public Map<String,Object> getAllDoctor(){
+        return doctorRepository.countNumberOfDoctor();
     }
 }
