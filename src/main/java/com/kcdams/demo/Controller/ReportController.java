@@ -31,14 +31,29 @@ public class ReportController {
         return reportRepository.patientDateReport();
     }
 
-    @GetMapping("/patientGenderReport")
-    public List<Map<String,Object>> patientGenderReport(){
-        return reportRepository.patientGenderReport();
-    }
+//    @GetMapping("/patientGenderReport")
+//    public List<Map<String,Object>> patientGenderReport(){
+//        return reportRepository.patientGenderReport();
+//    }
 
     @GetMapping("/doctorGenderReport")
     public List<Map<String,Object>> doctorGenderReport(){
         return reportRepository.doctorGenderReport();
+    }
+
+    @GetMapping("/registrarGenderReport")
+    public List<Map<String,Object>> registrarGenderReport(){
+        return reportRepository.registrarGenderReport();
+    }
+
+    @GetMapping("/psychologistGenderReport")
+    public List<Map<String,Object>> psychologistGenderReport(){
+        return reportRepository.psychologistGenderReport();
+    }
+
+    @GetMapping("/nurseGenderReport")
+    public List<Map<String,Object>> nurseGenderReport(){
+        return reportRepository.nurseGenderReport();
     }
 
 
@@ -51,5 +66,13 @@ public class ReportController {
         summary.put("nurses", reportRepository.getAllNursing().get("numberOfNurse").toString());
         summary.put("doctors", reportRepository.getAllDoctor().get("numberOfDoctor").toString());
         return ResponseEntity.ok(summary);
+    }
+
+    @GetMapping("/patSummary")
+    public ResponseEntity<Map<String,String>> getpatSummaryReport(){
+        Map<String,String> patsummary = new HashMap<>();
+        patsummary.put("males",reportRepository.getMalePatient().get("numberOfMale").toString());
+        patsummary.put("females",reportRepository.getFemalePatient().get("numberOfFemale").toString());
+        return ResponseEntity.ok(patsummary);
     }
 }

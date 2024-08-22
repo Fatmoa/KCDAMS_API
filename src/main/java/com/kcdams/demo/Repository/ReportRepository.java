@@ -31,12 +31,27 @@ public class ReportRepository {
         return receptionRepository.patientDateReport();
     }
 
-    public List<Map<String,Object>> patientGenderReport(){
-        return receptionRepository.patientGenderReport();
-    }
+//    public List<Map<String,Object>> patientGenderReport(){
+//        return receptionRepository.patientGenderReport();
+//    }
 
     public List<Map<String,Object>> doctorGenderReport(){
         return doctorRepository.doctorGenderReport();
+    }
+
+    public List<Map<String, Object>> registrarGenderReport() {
+        return registrarRepository.registrarGenderReport();
+
+    }
+
+    public List<Map<String, Object>> psychologistGenderReport() {
+        return psychologyRepository.psychologistGenderReport();
+
+    }
+
+    public List<Map<String, Object>> nurseGenderReport() {
+        return nursingRepository.nurseGenderReport();
+
     }
 
 
@@ -54,5 +69,14 @@ public class ReportRepository {
 
     public Map<String,Object> getAllDoctor(){
         return doctorRepository.countNumberOfDoctor();
+    }
+
+
+    public Map<String, Object> getMalePatient() {
+        return receptionRepository.countNumberOfMale();
+    }
+
+    public Map<String, Object> getFemalePatient() {
+        return receptionRepository.countNumberOfFemale();
     }
 }

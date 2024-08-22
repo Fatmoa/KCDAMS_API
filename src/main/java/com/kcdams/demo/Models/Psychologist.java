@@ -14,6 +14,7 @@ public class Psychologist {
     private int pyId;
     private String drugDuration;
     private String drugDay;
+    private String drug;
     private String reasUse;
     private String tStop;
     private String rStop;
@@ -23,7 +24,7 @@ public class Psychologist {
     private String sPlan;
     private String comm;
 
-    @ManyToOne
-    @JoinColumn(name= "drugCode", referencedColumnName = "drugCode")
-    private Drugs drugs;
+//    @ManyToOne
+//    @JoinColumn(name= "drugCode", referencedColumnName = "drugCode")
+//    private Drugs drugs;
 }
