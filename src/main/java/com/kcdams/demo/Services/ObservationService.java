@@ -46,10 +46,22 @@ public class ObservationService {
             z.setDrugType(observation.getDrugType());
             z.setComment(observation.getComment());
             z.setBp(observation.getBp());
-            z.setBang(observation.getBang());
-            z.setCoc(observation.getCoc());
+            z.setNiddle(observation.getNiddle());
+            z.setPhlebitis(observation.getPhlebitis());
+            z.setVenous(observation.getVenous());
+            z.setPl_niddle(observation.getPl_niddle());
+            z.setPl_phlebitis(observation.getPl_phlebitis());
+            z.setPl_venous(observation.getPl_venous());
             z.setLastUsg(observation.getLastUsg());
-
+            z.setUsag(observation.getUsag());
+            z.setLastDrug(observation.getLastDrug());
+            z.setTBtreat(observation.getTBtreat());
+            z.setPress(observation.getPress());
+            z.setWeight(observation.getWeight());
+            z.setHeight(observation.getHeight());
+            z.setPulse(observation.getPulse());
+            z.setPr(observation.getPr());
+            z.setPartner(observation.getPartner());
             return z;
         });
     }
